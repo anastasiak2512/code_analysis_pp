@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "modernize-use-trailing-return-type"
+#pragma ide diagnostic ignored "cppcoreguidelines-avoid-c-arrays"
 #include <iostream>
 #include <vector>
 #include <optional>
@@ -97,3 +100,5 @@ void sample10()
     auto c = sv.at(0);
 }
 
+
+#pragma clang diagnostic pop

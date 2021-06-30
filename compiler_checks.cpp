@@ -1,3 +1,10 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "readability-misleading-indentation"
+#pragma ide diagnostic ignored "clion-misra-cpp2008-0-1-7"
+#pragma ide diagnostic ignored "modernize-use-trailing-return-type"
+#pragma ide diagnostic ignored "clion-misra-cpp2008-6-4-1"
+#pragma ide diagnostic ignored "cppcoreguidelines-avoid-magic-numbers"
+
 #include <cstring>
 
 int compiler_test1()
@@ -27,3 +34,5 @@ void compiler_test3(bool cond)
         bar();
 }
 
+
+#pragma clang diagnostic pop
