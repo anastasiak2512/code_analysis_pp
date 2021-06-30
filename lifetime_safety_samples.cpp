@@ -89,4 +89,11 @@ MyIntPointer sample9() {
     return pointer;
 }
 
+std::string get_string();
+
+void sample10()
+{
+    std::string_view sv = get_string();
+    auto c = sv.at(0);
+}
 
