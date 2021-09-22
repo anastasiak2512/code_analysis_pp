@@ -114,6 +114,7 @@ void dangling_iterator()
 
 //Modified Owner
 //Owners that are passed by non-const reference are assumed to be modified by the callee.
+
 void use_unique_ptr(std::unique_ptr<int>& upRef);
 void assumes_modification()
 {
