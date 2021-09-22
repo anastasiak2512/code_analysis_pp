@@ -201,6 +201,33 @@ public:
     }
 };
 
+// Context-sensitive analysis
+bool isSuccess(int code) {
+    if (code != -1)
+        return true;
+
+    return false;
+}
+void global_analysis() {
+    int code = 1;
+    if (isSuccess(code))
+        ;
+}
+
+int* my_alloc(int length) {
+    return new int[10];
+}
+void my_free(int* buf) {
+    delete buf;
+}
+
+void dangling_csa() {
+    auto buffer1 = my_alloc(10);
+    auto buffer2 = my_alloc(10);
+    my_free(buffer2);
+    buffer1[0] = 1;
+    buffer2[0] = 2;
+}
 
 
 
