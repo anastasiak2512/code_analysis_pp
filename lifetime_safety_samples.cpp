@@ -100,5 +100,28 @@ void sample10()
     auto c = sv.at(0);
 }
 
+//Dangling iterator
+//the call to push_back may cause the vector to reallocate its underlying storage which invalidates the iterator it.
+
+void dangling_iterator()
+{
+    std::vector<int> v = { 1, 2, 3 };
+    auto it = v.begin();
+    *it = 0;
+    v.push_back(4);
+    *it = 0;
+}
+
+//Modified Owner
+//Owners that are passed by non-const reference are assumed to be modified by the callee.
+void use_unique_ptr(std::unique_ptr<int>& upRef);
+void assumes_modification()
+{
+    auto unique = std::make_unique<int>(0); // Line A
+    auto ptr = unique.get();
+    *ptr = 10;
+    use_unique_ptr(unique);
+    *ptr = 10;
+}
 
 #pragma clang diagnostic pop
