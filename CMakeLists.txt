@@ -12,10 +12,10 @@ else()
     add_compile_options(-Wsign-compare -Wsizeof-pointer-memaccess -Wmisleading-indentation)
 endif()
 
-add_subdirectory(Qt_sample)
+#add_subdirectory(Qt_sample)
 
 add_executable(lifetimes lifetime_safety_samples.cpp)
-add_executable(dfa dfa_samples.cpp)
+add_executable(dfa dfa_samples.cpp arrayIndexOutOfBounds.cpp comparisons.cpp)
 add_executable(clang-tidy-checks clang-tidy_cppcoreguidelines.cpp clang-tidy_modernize.cpp)
 add_executable(compiler_check compiler_checks.cpp)
 add_executable(misra misra_checks.cpp)

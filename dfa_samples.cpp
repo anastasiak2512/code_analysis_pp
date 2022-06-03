@@ -1,3 +1,42 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
+#pragma ide diagnostic ignored "readability-convert-member-functions-to-static"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "readability-non-const-parameter"
+
+// Interval Analysis
+#include <vector>
+#include <iostream>
+#include <array>
+
+bool compareFunc1(int i, int b) { return i <= b; }
+
+void test_compare() {
+    for (int i = 0; compareFunc1(i, 10);) {
+        i++;
+        if (i >= 5) {
+            break;
+        }
+    }
+}
+
+void test_std_array() {
+    std::array<int, 5> array = {1, 2, 3, 4, 5};
+    for (int i = 0; i < 10; ++i)
+        array[i] = i;
+}
+
+
+char charAt(std::string s, int index) {
+    return s[index];
+}
+
+void test_string() {
+    charAt("aaa", 5);
+}
+
+
+
 //Local DFA
 
 enum class Color { Red, Blue, Green, Yellow };
@@ -229,6 +268,4 @@ void dangling_csa() {
     buffer2[0] = 2;
 }
 
-
-
-
+#pragma clang diagnostic pop
