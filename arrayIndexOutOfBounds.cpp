@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "clion-misra-cpp2008-7-3-1"
 #pragma ide diagnostic ignored "ConstantParameter"
 #pragma ide diagnostic ignored "ConstantFunctionResult"
 #pragma ide diagnostic ignored "UnusedValue"
@@ -295,5 +296,28 @@ void test11() {
     C11 s[16];
     s[17] = c11; //Index may have a value of '17' which is out of bounds
 }
+
+
+
+#define THING_SIZE 8
+
+extern int *things[THING_SIZE];
+
+int get_id () {
+    return 8;
+}
+
+void bound_case(int id) {
+      int val = *things[id];
+}
+
+void test_bound() {
+      bound_case(get_id());
+}
+
+
+
+
+
 
 #pragma clang diagnostic pop

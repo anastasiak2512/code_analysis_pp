@@ -35,6 +35,47 @@ void test_string() {
     charAt("aaa", 5);
 }
 
+struct Buffer {
+    int *ptr;
+
+    Buffer(int length) : ptr(new int[length]) {}
+
+    void erase() {
+        delete[] ptr;
+    }
+};
+
+void foo() {
+    Buffer p1(10);
+    p1.erase();
+    p1.erase();
+}
+
+void bar() {
+    Buffer p1(10); //Leak of memory allocated in function 'Buffer'
+}
+
+
+// test 2
+
+struct Pair {
+    Pair(void *first, void *second) : first(first), second(second) {}
+
+    void *first;
+    void *second;
+
+    ~Pair() {
+        free(first);
+    }
+};
+
+void use_pair() {
+    Pair p(malloc(10),
+           malloc(10));
+}
+
+
+
 
 
 //Local DFA
@@ -179,6 +220,7 @@ int handle_pointer() {
 }
 
 //Global DFA (TU): null dereferencing
+
 class Deref {
     int* foo() {
         return nullptr;
@@ -190,6 +232,8 @@ public:
         buffer[0] = 0;
     }
 };
+
+
 
 // Global DFA (TU): unreachable code
 
