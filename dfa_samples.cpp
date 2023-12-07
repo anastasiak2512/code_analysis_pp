@@ -4,6 +4,46 @@
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "readability-non-const-parameter"
 
+//Function summaries
+
+class Tree {
+    Tree *left;
+    Tree *right;
+    int value;
+
+public:
+    Tree(Tree *left, Tree *right, int value) : left(left), right(right), value(value) {}
+    explicit Tree(int val): Tree(nullptr, nullptr, val) {}
+    int getValue() const { return value; }
+    Tree *getLeft() { return left; }
+    Tree *getRight() { return right; }
+};
+
+void test() {
+
+}
+
+// Non-init fields
+
+#include <cmath>
+struct Point { int x; int y; };
+
+void foo(double p);
+
+double dist(Point pt) {
+    foo(pt.x);
+    foo(pt.y);
+
+    return sqrt(pt.x * pt.x +
+                pt.y * pt.y);
+}
+
+void calcPoint() {
+    Point pt;
+    pt.x = 1;
+    dist(pt);
+}
+
 // Interval Analysis
 #include <vector>
 #include <iostream>
@@ -59,23 +99,17 @@ void bar() {
 // test 2
 
 struct Pair {
-    Pair(void *first, void *second) : first(first), second(second) {}
-
     void *first;
     void *second;
-
+    Pair(void *first, void *second) : first(first), second(second) {}
     ~Pair() {
         free(first);
     }
 };
 
 void use_pair() {
-    Pair p(malloc(10),
-           malloc(10));
+    Pair p(malloc(10),malloc(10));
 }
-
-
-
 
 
 //Local DFA
